@@ -114,7 +114,7 @@ Install dependencies to recreate our Surg-3M dataset
 Surg-3M dataset
 --------------------------
 
-> Researchers working in academic institutions can request direct access to the full Surg-3M dataset in LMDB format for non-commercial purposes through our website: [https://surg-3m.org/download](https://surg-3m.org/download)
+> Researchers working in academic institutions can request direct access to the full Surg-3M dataset in LMDB format for non-commercial purposes by sending email to chengan.che@kcl.ac.uk)
 
 You can use our code of the data curation pipeline and provided annotation file (["labels.json"](https://github.com/visurg-ai/surg-3m/blob/main/labels.json)) to recreate the whole Surg-3M dataset.
 
