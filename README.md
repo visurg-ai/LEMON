@@ -57,8 +57,8 @@ Diversity and procedure prevalence in Surg-3M:
 
 Install dependencies to recreate our Surg-3M dataset
 --------------------------------------------------
-
-* **If you want to use Docker**, follow the next steps to download our container:
+<!--
+* If you want to use Docker**, follow the next steps to download our container:
 
    ```bash
    # Download the repo
@@ -74,9 +74,9 @@ Install dependencies to recreate our Surg-3M dataset
    # Execute the docker container and get into the terminal
    $ docker exec --user $(whoami) --workdir $HOME -it Surg-3M /bin/zsh
    ```
+-->
 
-
-* **If you do not want to use Docker**, install the following dependencies in your local setup:
+* Install the following dependencies in your local setup:
 
    ```bash
    $ git clone git@github.com:visurg-ai/surg-3m.git
@@ -111,7 +111,7 @@ Install dependencies to recreate our Surg-3M dataset
 </div>
 
 
-Recreate our Surg-3M dataset
+Surg-3M dataset
 --------------------------
 
 > Researchers working in academic institutions can request direct access to the full Surg-3M dataset in LMDB format for non-commercial purposes through our website: [https://surg-3m.org/download](https://surg-3m.org/download)
@@ -138,7 +138,6 @@ You can use our code of the data curation pipeline and provided annotation file 
    ```
 
 
-
 4. Process the Surg-3M video dataset as Surg-3M image dataset (For foundation model pre-training).
 
    ```bash
@@ -160,7 +159,7 @@ You can download the SurgFM full checkpoint which contains backbone and projecti
 Follow the provided scripts to launch your own SurgFM training.
 
 ```bash
-$ python3 -m torch.distributed.run --nproc_per_node=8 --nnodes=1 surgfm/augdist.py --arch convnext_large --data_path 'Surg-3M dataset lmdb path' --output_dir 'your path to store the trained foundation model' --batch_size_per_gpu 40 --num_workers 10
+$ python3 -m torch.distributed.run --nproc_per_node=8 --nnodes=1 surgfm/surgfm.py --arch convnext_large --data_path 'Surg-3M dataset lmdb path' --output_dir 'your path to store the trained foundation model' --batch_size_per_gpu 40 --num_workers 10
 ```
 
 
