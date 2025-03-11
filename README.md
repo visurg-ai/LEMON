@@ -116,7 +116,7 @@ Recreate our Surg-3M dataset
 
 > Researchers working in academic institutions can request direct access to the full Surg-3M dataset in LMDB format for non-commercial purposes through our website: [https://surg-3m.org/download](https://surg-3m.org/download)
 
-You can use our code of the data curation pipeline and provided annotation file (["*labels.json*"](https://github.com/visurg-ai/surg-3m/blob/main/labels.json)) to recreate the whole Surg-3M dataset.
+You can use our code of the data curation pipeline and provided annotation file (["labels.json"](https://github.com/visurg-ai/surg-3m/blob/main/labels.json)) to recreate the whole Surg-3M dataset.
 
 1. Get your Youtube cookie:
 
@@ -125,17 +125,16 @@ You can use our code of the data curation pipeline and provided annotation file 
    Use the [cookies](https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp) extension to export your Youtube cookies as "cookies.txt".
 
 
-2. Download the annotation file (["*labels.json*"](https://github.com/visurg-ai/surg-3m/blob/main/labels.json)) and use the video downloader to download the original selected Youtube videos.
+2. Download the annotation file (["labels.json"](https://github.com/visurg-ai/surg-3m/blob/main/labels.json)) and use the video downloader to download the original selected Youtube videos.
 
    ```bash
-   $ cd src
-   $ python3 video_downloader.py --video-path '../labels.json' --output 'your path to store the downloaded videos' --cookies 'your YouTube cookie file'
+   $ python3 src/video_downloader.py --video-path '../labels.json' --output 'your path to store the downloaded videos' --cookies 'your YouTube cookie file'
    ```
 
 3. Curate the downloaded original videos as Surg-3M video dataset. In detail, use the video_processor to classify each frame as either 'surgical' or 'non-surgical', then remove the beginning and end segments of non-surgical content from the videos, and mask the non-surgical regions in 'surgical' frames and the entire 'non-surgical' frames.
 
    ```bash
-   $ python3 video_processor.py --input 'your original downloaded video storage path' --input-json '../labels.json' --output 'your path to store the curated videos and their corresponding frame annotation files' --classify-models 'frame classification model' --segment-models 'non-surgical object detection models'
+   $ python3 src/video_processor.py --input 'your original downloaded video storage path' --input-json '../labels.json' --output 'your path to store the curated videos and their corresponding frame annotation files' --classify-models 'frame classification model' --segment-models 'non-surgical object detection models'
    ```
 
 
@@ -143,7 +142,7 @@ You can use our code of the data curation pipeline and provided annotation file 
 4. Process the Surg-3M video dataset as Surg-3M image dataset (For foundation model pre-training).
 
    ```bash
-   $ python3 create_lmdb_Surg-3M.py --video-folder 'your directory containing the curated videos and their corresponding frame annotation files' --output-json 'your path for the json file to verify the videos and labels alignment' --lmdb-path 'your lmdb storage path'
+   $ python3 src/create_lmdb_Surg-3M.py --video-folder 'your directory containing the curated videos and their corresponding frame annotation files' --output-json 'your path for the json file to verify the videos and labels alignment' --lmdb-path 'your lmdb storage path'
    ```
 
 <br>
@@ -161,8 +160,7 @@ You can download the SurgFM full checkpoint which contains backbone and projecti
 Follow the provided scripts to launch your own SurgFM training.
 
 ```bash
-$ cd ../AugDist
-$ python3 -m torch.distributed.run --nproc_per_node=8 --nnodes=1 augdist.py --arch convnext_large --data_path 'Surg-3M dataset lmdb path' --output_dir 'your path to store the trained foundation model' --batch_size_per_gpu 40 --num_workers 10
+$ python3 -m torch.distributed.run --nproc_per_node=8 --nnodes=1 surgfm/augdist.py --arch convnext_large --data_path 'Surg-3M dataset lmdb path' --output_dir 'your path to store the trained foundation model' --batch_size_per_gpu 40 --num_workers 10
 ```
 
 
@@ -175,8 +173,8 @@ How to run our SurgFM foundation model to extract features from your video frame
    from model_loader import build_SurgFM
 
    # Load the pre-trained SurgFM model
-   SurgFM = build_SurgFM(pretrained_weights = 'your path to the SurgFM')
-   SurgFM.eval()
+   surgfm = build_SurgFM(pretrained_weights = 'your path to the SurgFM')
+   surgfm.eval()
 
    # Load the image and convert it to a PyTorch tensor
    img_path = 'path/to/your/image.jpg'
@@ -185,13 +183,13 @@ How to run our SurgFM foundation model to extract features from your video frame
    img_tensor = torch.tensor(np.array(img)).unsqueeze(0).to('cuda')
 
    # Extract features from the image using the ResNet50 model
-   outputs = SurgFM(img_tensor)
+   outputs = surgfm(img_tensor)
    ```
 
 
 
 <!--
-**SurgFM performance:**
+**surgfm performance:**
 
 This figure shows the performance comparison between our foundation
 model, SurgFM, and the state-of-the-art (SotA) models. Our
