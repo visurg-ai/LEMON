@@ -24,11 +24,11 @@ This is the official repository for the paper [Surg-3M: A Dataset and Foundation
 
 This repository provides open access to the *Surg-3M* dataset, *Surg-FM* foundation model, and training code. 
 
-*Surg-3M* is a dataset of 4K surgical high-resolution videos (3M frames, when videos are sampled at 1fps) from 35 diverse surgical procedure types. Each video is annotated for multi-label classification, indicating the surgical procedures carried out in the video, and for binary classification, indicating if it is robotic or non-robotic. The dataset's annotations can be found in [labels.json](https://github.com/visurg-ai/Surg-3M-dataset/blob/main/labels.json).
+*Surg-3M* is a dataset of 4K surgical high-resolution videos (3M frames, when videos are sampled at 1fps) from 35 diverse surgical procedure types. Each video is annotated for multi-label classification, indicating the surgical procedures carried out in the video, and for binary classification, indicating if it is robotic or non-robotic. The dataset's annotations can be found in [labels.json](https://github.com/visurg-ai/surg-3m/blob/main/labels.json).
 
 *Surg-FM* is an image foundation model for surgery, it receives an image as input and produces a feature vector of 1536 features as output. 
 
-<!--The website of our dataset is: [http://Surg-3M-dataset.org](https://Surg-3M-dataset.org)-->
+<!--The website of our dataset is: [http://surg-3m.org](https://surg-3m.org)-->
 
 If you use our dataset, model, or code in your research, please cite our paper:
 
@@ -62,8 +62,8 @@ Install dependencies to recreate our Surg-3M dataset
 
    ```bash
    # Download the repo
-   $ git clone git@github.com:visurg-ai/Surg-3M-dataset.git
-   $ cd Surg-3M-dataset/docker
+   $ git clone git@github.com:visurg-ai/surg-3m.git
+   $ cd surg-3m/docker
 
    # Build the docker image
    $ docker build --build-arg USER=$(whoami) --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t chengan/Surg-3M:latest .
@@ -79,11 +79,11 @@ Install dependencies to recreate our Surg-3M dataset
 * **If you do not want to use Docker**, install the following dependencies in your local setup:
 
    ```bash
-   $ git clone git@github.com:visurg-ai/Surg-3M-dataset.git
-   $ cd Surg-3M-dataset && pip install -r requirements.txt
+   $ git clone git@github.com:visurg-ai/surg-3m.git
+   $ cd surg-3m && pip install -r requirements.txt
    ```
 
-* **Models used in data curation**, We provide the models used in our data curation pipeline to assist with constructing the Surg-3M dataset, including video storyboard classification models, frame classification models, and non-surgical object detection models. The model loader file can be found at [src/model_loader.py](https://github.com/visurg-ai/Surg-3M-dataset/blob/main/src/model_loader.py)
+* **Models used in data curation**, We provide the models used in our data curation pipeline to assist with constructing the Surg-3M dataset, including video storyboard classification models, frame classification models, and non-surgical object detection models. The model loader file can be found at [src/model_loader.py](https://github.com/visurg-ai/surg-3m/blob/main/src/model_loader.py)
 
 <div align="center">
 <table style="margin-left: auto; margin-right: auto;">
@@ -114,9 +114,9 @@ Install dependencies to recreate our Surg-3M dataset
 Recreate our Surg-3M dataset
 --------------------------
 
-> Researchers working in academic institutions can request direct access to the full Surg-3M dataset in LMDB format for non-commercial purposes through our website: [https://surg-3m-dataset.org/download](https://Surg-3M-dataset.org/download)
+> Researchers working in academic institutions can request direct access to the full Surg-3M dataset in LMDB format for non-commercial purposes through our website: [https://surg-3m.org/download](https://surg-3m.org/download)
 
-You can use our code of the data curation pipeline and provided annotation file (["*labels.json*"](https://github.com/visurg-ai/Surg-3M-dataset/blob/main/labels.json)) to recreate the whole Surg-3M dataset.
+You can use our code of the data curation pipeline and provided annotation file (["*labels.json*"](https://github.com/visurg-ai/surg-3m/blob/main/labels.json)) to recreate the whole Surg-3M dataset.
 
 1. Get your Youtube cookie:
 
@@ -125,7 +125,7 @@ You can use our code of the data curation pipeline and provided annotation file 
    Use the [cookies](https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp) extension to export your Youtube cookies as "cookies.txt".
 
 
-2. Download the annotation file (["*labels.json*"](https://github.com/visurg-ai/Surg-3M-dataset/blob/main/labels.json)) and use the video downloader to download the original selected Youtube videos.
+2. Download the annotation file (["*labels.json*"](https://github.com/visurg-ai/surg-3m/blob/main/labels.json)) and use the video downloader to download the original selected Youtube videos.
 
    ```bash
    $ cd src
