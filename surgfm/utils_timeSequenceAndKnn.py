@@ -43,7 +43,7 @@ class Dataset(VisionDataset):
         self.similar_images_map = None
 
         if similar_image_json is not None:
-            self.similar_images_map = self.load_json(similar_image_json)
+            self.similar_images_map = self.load_similar_images_json(similar_image_json)
 
         self.env = lmdb.open(self.lmdb, readonly=True, lock=False)
         with self.env.begin(write=False) as txn:
@@ -52,7 +52,7 @@ class Dataset(VisionDataset):
                 self.data.append(key)
                 self.num_samples += 1
 
-    def load_json(self, json_file):
+    def load_similar_images_json(self, json_file):
         """
         Load the JSON file that contains similar image mappings.
         """

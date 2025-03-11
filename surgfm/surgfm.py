@@ -18,7 +18,7 @@ import torch.nn.functional as F
 from torchvision import datasets, transforms
 from torchvision import models as torchvision_models
 from PIL import ImageFilter, ImageOps
-import utils_timeSequenceAndKnn_withoutTesting as utils
+import utils_timeSequenceAndKnn as utils
 import vision_transformer as vits
 from vision_transformer import DINOHead
 
@@ -92,7 +92,6 @@ def get_args_parser():
         choices=['adamw', 'sgd', 'lars'], help="""Type of optimizer. We recommend using adamw with ViTs.""")
     parser.add_argument('--drop_path_rate', type=float, default=0.1, help="stochastic depth rate")
     parser.add_argument('--knn-json', type=str, default=None, help="knn json file")
-    parser.add_argument('--testing-json', type=str, default=None, help="knn json file")
     
     # Multi-crop parameters
     parser.add_argument('--global_crops_scale', type=float, nargs='+', default=(0.4, 1.),
@@ -132,7 +131,7 @@ def train_dino(args):
         args.local_crops_scale,
         args.local_crops_number,
     )
-    dataset = utils.Dataset(args.data_path, similar_image_json=args.knn_json, testing_json=args.testing_json, transform=transform)
+    dataset = utils.Dataset(args.data_path, similar_image_json=args.knn_json, transform=transform)
     sampler = torch.utils.data.DistributedSampler(dataset, shuffle=True)
     data_loader = torch.utils.data.DataLoader(
         dataset,
@@ -145,7 +144,6 @@ def train_dino(args):
     print(f"Data loaded: there are {len(dataset)} images.")
 
     # ============ building student and teacher networks ... ============
-    # we changed the name DeiT-S for ViT-S to avoid confusions
     args.arch = args.arch.replace("deit", "vit")
     # if the network is a Vision Transformer (i.e. vit_tiny, vit_small, vit_base)
     if args.arch in vits.__dict__.keys():
@@ -207,7 +205,7 @@ def train_dino(args):
     print(f"Student and Teacher are built: they are both {args.arch} network.")
 
     # ============ preparing loss ... ============
-    dino_loss = DINOLoss(
+    loss = Loss(
         args.out_dim,
         args.local_crops_number + 8,  # total number of crops = 2 global crops + local_crops_number
         args.warmup_teacher_temp,
@@ -255,7 +253,7 @@ def train_dino(args):
         teacher=teacher,
         optimizer=optimizer,
         fp16_scaler=fp16_scaler,
-        dino_loss=dino_loss,
+        loss=loss,
     )
     start_epoch = to_restore["epoch"]
 
@@ -265,7 +263,7 @@ def train_dino(args):
         data_loader.sampler.set_epoch(epoch)
 
         # ============ training one epoch of DINO ... ============
-        train_stats = train_one_epoch(student, teacher, teacher_without_ddp, dino_loss,
+        train_stats = train_one_epoch(student, teacher, teacher_without_ddp, loss,
             data_loader, optimizer, lr_schedule, wd_schedule, momentum_schedule,
             epoch, fp16_scaler, args)
 
@@ -276,7 +274,7 @@ def train_dino(args):
             'optimizer': optimizer.state_dict(),
             'epoch': epoch + 1,
             'args': args,
-            'dino_loss': dino_loss.state_dict(),
+            'loss': loss.state_dict(),
         }
         if fp16_scaler is not None:
             save_dict['fp16_scaler'] = fp16_scaler.state_dict()
@@ -293,7 +291,7 @@ def train_dino(args):
     print('Training time {}'.format(total_time_str))
 
 
-def train_one_epoch(student, teacher, teacher_without_ddp, dino_loss, data_loader,
+def train_one_epoch(student, teacher, teacher_without_ddp, loss, data_loader,
                     optimizer, lr_schedule, wd_schedule, momentum_schedule,epoch,
                     fp16_scaler, args):
     metric_logger = utils.MetricLogger(delimiter="  ")
@@ -308,28 +306,28 @@ def train_one_epoch(student, teacher, teacher_without_ddp, dino_loss, data_loade
 
         # move images to gpu
         images = [im.cuda(non_blocking=True) for im in images]
-        # teacher and student forward passes + compute dino loss
+        # teacher and student forward passes + compute loss
         with torch.cuda.amp.autocast(fp16_scaler is not None):
             teacher_output = teacher(images[:2])  # only the 2 global views pass through the teacher
             student_output = student(images)
-            loss = dino_loss(student_output, teacher_output, epoch)
+            loss_ = loss(student_output, teacher_output, epoch)
 
-        if not math.isfinite(loss.item()):
-            print("Loss is {}, stopping training".format(loss.item()), force=True)
+        if not math.isfinite(loss_.item()):
+            print("Loss is {}, stopping training".format(loss_.item()), force=True)
             sys.exit(1)
 
         # student update
         optimizer.zero_grad()
         param_norms = None
         if fp16_scaler is None:
-            loss.backward()
+            loss_.backward()
             if args.clip_grad:
                 param_norms = utils.clip_gradients(student, args.clip_grad)
             utils.cancel_gradients_last_layer(epoch, student,
                                               args.freeze_last_layer)
             optimizer.step()
         else:
-            fp16_scaler.scale(loss).backward()
+            fp16_scaler.scale(loss_).backward()
             if args.clip_grad:
                 fp16_scaler.unscale_(optimizer)  # unscale the gradients of optimizer's assigned params in-place
                 param_norms = utils.clip_gradients(student, args.clip_grad)
@@ -346,7 +344,7 @@ def train_one_epoch(student, teacher, teacher_without_ddp, dino_loss, data_loade
 
         # logging
         torch.cuda.synchronize()
-        metric_logger.update(loss=loss.item())
+        metric_logger.update(loss=loss_.item())
         metric_logger.update(lr=optimizer.param_groups[0]["lr"])
         metric_logger.update(wd=optimizer.param_groups[0]["weight_decay"])
     # gather the stats from all processes
@@ -355,7 +353,7 @@ def train_one_epoch(student, teacher, teacher_without_ddp, dino_loss, data_loade
     return {k: meter.global_avg for k, meter in metric_logger.meters.items()}
 
 
-class DINOLoss(nn.Module):
+class Loss(nn.Module):
     def __init__(self, out_dim, ncrops, warmup_teacher_temp, teacher_temp,
                  warmup_teacher_temp_epochs, nepochs, student_temp=0.1,
                  center_momentum=0.9):
