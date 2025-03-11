@@ -19,7 +19,7 @@ def build_model(nclasses: int = 2, mode: str = None, segment_model: str = None):
 
     return net
 
-def build_LemonFM(nclasses: int = 2, pretrained: bool = True, pretrained_weights = None):
+def build_SurgFM(nclasses: int = 2, pretrained: bool = True, pretrained_weights = None):
 
 
     #net of ConvNext
