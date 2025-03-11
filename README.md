@@ -1,10 +1,16 @@
 <p align="center">
-<img src="https://github.com/user-attachments/assets/d8e5f00e-49ab-4146-b2e5-481bd8bec4c4">
+<img src="https://github.com/user-attachments/assets/04f6e2eb-1380-448e-a3f6-eed3e9dbf177">
 </p>
 
-[📚 Paper](TODO) - [🤖 Code](src) - [🔥 Demo](TODO) - [🤗 Model](TODO)
+[📚 Paper](TODO) - [🤖 Code](src)  - [🤗 Model](TODO)
 
 Star ⭐ us if you like it!
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/6250cd6a-1404-4786-9c15-fe396265940d" width="70%" > </img>
+</div>
+
+
 
 ## News
 
@@ -14,13 +20,13 @@ XX/March/2025. The [arXiv](TODO) version of the paper is released.
 
 <br>
 
-This is the official repository for the paper [Surg-3M: TODO](TODO).
+This is the official repository for the paper [Surg-3M: A Dataset and Foundation Model for Perception in Surgical Settings](TODO).
 
 This repository provides open access to the *Surg-3M* dataset, *Surg-FM* foundation model, and training code. 
 
 *Surg-3M* is a dataset of 4K surgical high-resolution videos (3M frames, when videos are sampled at 1fps) from 35 diverse surgical procedure types. Each video is annotated for multi-label classification, indicating the surgical procedures carried out in the video, and for binary classification, indicating if it is robotic or non-robotic. The dataset's annotations can be found in [labels.json](https://github.com/visurg-ai/Surg-3M-dataset/blob/main/labels.json).
 
-*Surg-FM* is an image foundation model for surgery, it receives an image as input and produces a feature vector of TODO features as output. 
+*Surg-FM* is an image foundation model for surgery, it receives an image as input and produces a feature vector of 1536 features as output. 
 
 <!--The website of our dataset is: [http://Surg-3M-dataset.org](https://Surg-3M-dataset.org)-->
 
@@ -32,26 +38,21 @@ If you use our dataset, model, or code in your research, please cite our paper:
    booktitle = {TODO: use the correct arXiv citation here},
    month = {3},
    publisher = {arXiv},
-   title = {Surg-3M: A Large Endoscopic MONocular Dataset and Foundation Model for Visual Understanding in Surgery},
+   title = {Surg-3M: A Dataset and Foundation Model for Perception in Surgical Settings},
    year = {2025}
 }
 ```
 
 Abstract
 --------
+Advancements in computer-assisted surgical procedures heavily rely on accurate visual data interpretation from camera systems used during surgeries. Traditional open-access datasets focusing on surgical procedures are often limited by their small size, typically consisting of fewer than 100 videos with less than 100K images. To address these constraints, a new dataset called Surg-3M has been compiled using a novel aggregation pipeline that collects high-resolution videos from online sources. Featuring an extensive collection of over 4K surgical videos and more than 3 million high-quality images from multiple procedure types, Surg-3M offers a comprehensive resource surpassing existing alternatives in size and scope, including two novel tasks. To demonstrate the effectiveness of this dataset, we present SurgFM, a self-supervised foundation model pretrained on Surg-3M that achieves impressive results in downstream tasks such as surgical phase recognition, action recognition, and tool presence detection. Combining key components from ConvNeXt, DINO, and an innovative augmented distillation method, SurgFM exhibits exceptional performance compared to specialist architectures across various benchmarks. Our experimental results show that SurgFM outperforms state-of-the-art models in multiple downstream tasks, including significant gains in surgical phase recognition (+8.9pp, +4.7pp, and +3.9pp of Jaccard in AutoLaparo, M2CAI16, and Cholec80), action recognition (+3.1pp of mAP in CholecT50) and tool presence detection (+4.6pp of mAP in Cholec80). Moreover, even when using only half of the data, SurgFM outperforms state-of-the-art models in AutoLaparo and achieves state-of-the-art performance in Cholec80. Both Surg-3M and SurgFM have significant potential to accelerate progress towards developing autonomous robotic surgery systems.
 
-Advancements in computer-assisted surgical procedures heavily rely on accurate visual data interpretation from camera systems used during surgeries. Traditional open-access datasets focusing on surgical procedures are often limited by their small size, typically consisting of fewer than 100 videos with less than 100K images. To address these constraints, a new dataset called Surg-3M has been compiled using a novel aggregation pipeline that collects high-resolution videos from online sources. Featuring an extensive collection of over 4K surgical videos and more than 3 million high-quality images from multiple procedure types, Surg-3M offers a comprehensive resource surpassing existing alternatives in size and scope. To demonstrate the effectiveness of this dataset, we present SurgFM, a self-supervised foundation model pre-trained on Surg-3M that achieves impressive results in downstream tasks such as surgical phase recognition, action recognition, and tool presence detection. Combining key components from ConvNeXt, DINO, and an innovative augmented distillation method, SurgFM exhibits exceptional performance compared to specialist architectures across various benchmarks. Our experimental results show that SurgFM outperforms state-of-the-art models in multiple downstream tasks, including significant gains in surgical phase recognition (+8.9pp, +4.7pp, and +3.9pp of Jaccard in AutoLaparo, M2CAI16, and Cholec80), action recognition (+3.1pp of mAP in CholecT50) and tool presence detection (+4.6pp of mAP in Cholec80). Moreover, even when using only half of the data, SurgFM outperforms state-of-the-art models in AutoLaparo and achieves state-of-the-art performance in Cholec80. The Surg-3M dataset and our foundation model have significant potential to accelerate progress towards developing autonomous robotic surgery systems.
-
-The video processing pipeline leading to the clean videos in the *Surg-3M* dataset is as follows:
-
-<img src="https://github.com/user-attachments/assets/71a70e86-2b95-4d1b-aaf1-6e7e82af1671">
 
 <br>
-<br>
 
-The distribution of frames per surgical procedure is as follows:
+Diversity and procedure prevalence in Surg-3M:
 
-<img src="https://github.com/user-attachments/assets/c5bec4c5-124d-4910-8c88-d3c8a41f570f">
+<img src="https://github.com/user-attachments/assets/67322046-5515-47e1-bb3f-621892c8608c">
 
 
 Install dependencies to recreate our Surg-3M dataset
@@ -109,6 +110,7 @@ Install dependencies to recreate our Surg-3M dataset
 </table>
 </div>
 
+
 Recreate our Surg-3M dataset
 --------------------------
 
@@ -144,15 +146,19 @@ You can use our code of the data curation pipeline and provided annotation file 
    $ python3 create_lmdb_Surg-3M.py --video-folder 'your directory containing the curated videos and their corresponding frame annotation files' --output-json 'your path for the json file to verify the videos and labels alignment' --lmdb-path 'your lmdb storage path'
    ```
 
+<br>
+The video processing pipeline leading to the clean videos in the *Surg-3M* dataset is as follows:
+
+<img src="https://github.com/user-attachments/assets/87e604b4-b433-45ee-a5db-aaceb2dadd2d">
 
 
-Surg-3MFM model
+SurgFM model
 -------------
-You can download the Surg-3MFM full checkpoint which contains backbone and projection head weights for both student and teacher networks at <a href="">Surg-3MFM</a>.
+You can download the SurgFM full checkpoint which contains backbone and projection head weights for both student and teacher networks at <a href="">SurgFM</a>.
 
-**Surg-3MFM training:**
+**SurgFM training:**
 
-Follow the provided scripts to launch your own Surg-3MFM training.
+Follow the provided scripts to launch your own SurgFM training.
 
 ```bash
 $ cd ../AugDist
@@ -160,17 +166,17 @@ $ python3 -m torch.distributed.run --nproc_per_node=8 --nnodes=1 augdist.py --ar
 ```
 
 
-How to run our Surg-3MFM foundation model to extract features from your video frames
+How to run our SurgFM foundation model to extract features from your video frames
 ----------------------------------------------------------------------------------
 
    ```python
    import torch
    from PIL import Image
-   from model_loader import build_Surg-3MFM
+   from model_loader import build_SurgFM
 
-   # Load the pre-trained Surg-3MFM model
-   Surg-3Mfm = build_Surg-3MFM(pretrained_weights = 'your path to the Surg-3MFM')
-   Surg-3Mfm.eval()
+   # Load the pre-trained SurgFM model
+   SurgFM = build_SurgFM(pretrained_weights = 'your path to the SurgFM')
+   SurgFM.eval()
 
    # Load the image and convert it to a PyTorch tensor
    img_path = 'path/to/your/image.jpg'
@@ -179,18 +185,18 @@ How to run our Surg-3MFM foundation model to extract features from your video fr
    img_tensor = torch.tensor(np.array(img)).unsqueeze(0).to('cuda')
 
    # Extract features from the image using the ResNet50 model
-   outputs = Surg-3Mfm(img_tensor)
+   outputs = SurgFM(img_tensor)
    ```
 
 
 
 <!--
-**Surg-3MFM performance:**
+**SurgFM performance:**
 
 This figure shows the performance comparison between our foundation
-model, Surg-3MFM, and the state-of-the-art (SotA) models. Our
+model, SurgFM, and the state-of-the-art (SotA) models. Our
 evaluation focuses on three surgical downstream tasks and six
-datasets. Surg-3MFM results are shown in bold, axis labels are presented in regular font.
+datasets. SurgFM results are shown in bold, axis labels are presented in regular font.
 
 <img src="https://github.com/user-attachments/assets/080ec843-fc11-4ec7-b669-0bc1de2bf16f">
 -->
