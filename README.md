@@ -145,7 +145,7 @@ You can use our code of the data curation pipeline and provided annotation file 
    ```
 
 <br>
-The video processing pipeline leading to the clean videos in the *Surg-3M* dataset is as follows:
+The video processing pipeline leading to the clean videos in the Surg-3M dataset is as follows:
 
 <img src="https://github.com/user-attachments/assets/87e604b4-b433-45ee-a5db-aaceb2dadd2d">
 
