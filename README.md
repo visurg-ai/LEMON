@@ -83,32 +83,7 @@ Install dependencies to recreate our Surg-3M dataset
    $ cd surg-3m && pip install -r requirements.txt
    ```
 
-* **Models used in data curation**, We provide the models used in our data curation pipeline to assist with constructing the Surg-3M dataset, including video storyboard classification models, frame classification models, and non-surgical object detection models. The models can be downloaded from [🤗 Surg3m_curation_models](https://huggingface.co/visurg/Surg3M_curation_models). The model loader file can be found at [src/model_loader.py](https://github.com/visurg-ai/surg-3m/blob/main/src/model_loader.py)
-
-<div align="center">
-<table style="margin-left: auto; margin-right: auto;">
-  <tr>
-    <th>Model</th>
-    <th>Architecture</th>
-    <th colspan="5">Download</th>
-  </tr>
-  <tr>
-    <td>Video storyboard classification models</td>
-    <td>ResNet-18</td>
-    <td><a href="">Full ckpt</a></td>
-  </tr>
-  <tr>
-    <td>Frame classification models</td>
-    <td>ResNet-18</td>
-    <td><a href="">Full ckpt</a></td>
-  </tr>
-  <tr>
-    <td>Non-surgical object detection models</td>
-    <td>Yolov8-Nano</td>
-    <td><a href="">Full ckpt</a></td>
-  </tr>
-</table>
-</div>
+* **Models used in data curation**, We provide the models used in our data curation pipeline to assist with constructing the Surg-3M dataset, including video storyboard classification models, frame classification models, and non-surgical object detection models. The models can be downloaded from [🤗 Surg3M curation models](https://huggingface.co/visurg/Surg3M_curation_models). The model loader file can be found at [src/model_loader.py](https://github.com/visurg-ai/surg-3m/blob/main/src/model_loader.py)
 
 
 Surg-3M dataset
