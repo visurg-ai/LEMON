@@ -83,7 +83,7 @@ Install dependencies to recreate our Surg-3M dataset
    $ cd surg-3m && pip install -r requirements.txt
    ```
 
-* **Models used in data curation**, We provide the models used in our data curation pipeline to assist with constructing the Surg-3M dataset, including video storyboard classification models, frame classification models, and non-surgical object detection models. The model loader file can be found at [src/model_loader.py](https://github.com/visurg-ai/surg-3m/blob/main/src/model_loader.py)
+* **Models used in data curation**, We provide the models used in our data curation pipeline to assist with constructing the Surg-3M dataset, including video storyboard classification models, frame classification models, and non-surgical object detection models. The models can be downloaded from [🤗 Surg3m_curation_models](https://huggingface.co/visurg/Surg3M_curation_models). The model loader file can be found at [src/model_loader.py](https://github.com/visurg-ai/surg-3m/blob/main/src/model_loader.py)
 
 <div align="center">
 <table style="margin-left: auto; margin-right: auto;">
@@ -152,7 +152,7 @@ The video processing pipeline leading to the clean videos in the Surg-3M dataset
 
 SurgFM model
 -------------
-You can download the SurgFM full checkpoint which contains backbone and projection head weights for both student and teacher networks at <a href="">SurgFM</a>.
+You can download the SurgFM full checkpoint which contains backbone and projection head weights for both student and teacher networks at [🤗 SurgFM](https://huggingface.co/visurg/SurgFM).
 
 **SurgFM training:**
 
