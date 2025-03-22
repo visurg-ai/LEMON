@@ -157,7 +157,7 @@ How to run our SurgFM foundation model to extract features from your video frame
    img = img.resize((224, 224))
    img_tensor = torch.tensor(np.array(img)).unsqueeze(0).to('cuda')
 
-   # Extract features from the image using the ResNet50 model
+   # Extract features from the image
    outputs = surgfm(img_tensor)
    ```
 
