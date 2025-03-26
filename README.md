@@ -4,7 +4,7 @@
     </a>
 </p>
 
-[📚 Paper](https://arxiv.org/abs/2503.19740) - [🤖 Code](src)  - [🤗 Model](https://huggingface.co/visurg/SurgFM) <!-- - [🌐 Website](Todo)-->
+[📚 Paper](https://arxiv.org/abs/2503.19740) - [🤖 Code](src)  - [🤗 Model](https://huggingface.co/visurg/SurgFM) [🌐 Website](https://surg-3m.visurg.ai/)
 
 Star ⭐ us if you like it!
 
@@ -92,7 +92,7 @@ Install dependencies to recreate our Surg-3M dataset
 Surg-3M dataset
 --------------------------
 
-<!-- > Researchers working in academic institutions can request direct access to the full Surg-3M dataset in LMDB format for non-commercial purposes by filling the request form in our [🌐 Website](Todo))-->
+Researchers working in academic institutions can request direct access to the full Surg-3M dataset in LMDB format for non-commercial purposes by filling the request form in our [🌐 Website](https://surg-3m.visurg.ai/))
 
 You can use our code of the data curation pipeline and provided annotation file (["labels.json"](https://github.com/visurg-ai/surg-3m/blob/main/labels.json)) to recreate the whole Surg-3M dataset.
 
