@@ -2,7 +2,7 @@
 <img src="https://github.com/user-attachments/assets/04f6e2eb-1380-448e-a3f6-eed3e9dbf177">
 </p>
 
-[📚 Paper](TODO) - [🤖 Code](src)  - [🤗 Model](https://huggingface.co/visurg/SurgFM) - [🌐 Website](Todo)
+[📚 Paper](https://arxiv.org/abs/2503.19740) - [🤖 Code](src)  - [🤗 Model](https://huggingface.co/visurg/SurgFM) - [🌐 Website](Todo)
 
 Star ⭐ us if you like it!
 
@@ -16,11 +16,11 @@ Star ⭐ us if you like it!
 
 <!-- XX/March/2025. The [HuggingFace models and demo](TODO) are released. -->
 <!--<br>-->
-25/March/2025. The [arXiv](TODO) version of the paper is released.
+25/March/2025. The [arXiv](https://arxiv.org/abs/2503.19740) version of the paper is released.
 
 <br>
 
-This is the official repository for the paper [Surg-3M: A Dataset and Foundation Model for Perception in Surgical Settings](TODO).
+This is the official repository for the paper [Surg-3M: A Dataset and Foundation Model for Perception in Surgical Settings](https://arxiv.org/abs/2503.19740).
 
 This repository provides open access to the *Surg-3M* dataset, *Surg-FM* foundation model, and training code. 
 
