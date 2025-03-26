@@ -2,7 +2,7 @@
 <img src="https://github.com/user-attachments/assets/04f6e2eb-1380-448e-a3f6-eed3e9dbf177">
 </p>
 
-[📚 Paper](https://arxiv.org/abs/2503.19740) - [🤖 Code](src)  - [🤗 Model](https://huggingface.co/visurg/SurgFM) - [🌐 Website](Todo)
+[📚 Paper](https://arxiv.org/abs/2503.19740) - [🤖 Code](src)  - [🤗 Model](https://huggingface.co/visurg/SurgFM) <!-- - [🌐 Website](Todo)-->
 
 Star ⭐ us if you like it!
 
