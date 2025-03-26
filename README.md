@@ -4,7 +4,7 @@
     </a>
 </p>
 
-[📚 Paper](https://arxiv.org/abs/2503.19740) - [🤖 Code](src)  - [🤗 Model](https://huggingface.co/visurg/SurgFM) [🌐 Website](https://surg-3m.visurg.ai/)
+[📚 Paper](https://arxiv.org/abs/2503.19740) - [🤖 Code](src) - [🤗 Model](https://huggingface.co/visurg/SurgFM) - [🌐 Website](https://surg-3m.visurg.ai/)
 
 Star ⭐ us if you like it!
 
