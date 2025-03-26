@@ -16,7 +16,7 @@ Star ⭐ us if you like it!
 
 <!-- XX/March/2025. The [HuggingFace models and demo](TODO) are released. -->
 <!--<br>-->
-25/March/2025. The [arXiv](https://arxiv.org/abs/2503.19740) version of the paper is released.
+* 25/March/2025. The [arXiv](https://arxiv.org/abs/2503.19740) version of the paper is released.
 
 <br>
 
