@@ -33,12 +33,14 @@ This repository provides open access to the *Surg-3M* dataset, *Surg-FM* foundat
 If you use our dataset, model, or code in your research, please cite our paper:
 
 ```
-@inproceedings{Che2025,
-   author = {Chengan Che and Chao Wang and Tom Vercauteren and Sophia Tsoka and Luis C. Garcia-Peraza-Herrera},
-   month = {3},
-   journal = {arXiv preprint arXiv:2503.19740},
-   title = {Surg-3M: A Dataset and Foundation Model for Perception in Surgical Settings},
-   year = {2025}
+@misc{che2025surg3mdatasetfoundationmodel,
+      title={Surg-3M: A Dataset and Foundation Model for Perception in Surgical Settings}, 
+      author={Chengan Che and Chao Wang and Tom Vercauteren and Sophia Tsoka and Luis C. Garcia-Peraza-Herrera},
+      year={2025},
+      eprint={2503.19740},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2503.19740}, 
 }
 ```
 
