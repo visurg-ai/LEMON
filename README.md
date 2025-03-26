@@ -35,9 +35,8 @@ If you use our dataset, model, or code in your research, please cite our paper:
 ```
 @inproceedings{Che2025,
    author = {Chengan Che and Chao Wang and Tom Vercauteren and Sophia Tsoka and Luis C. Garcia-Peraza-Herrera},
-   booktitle = {TODO: use the correct arXiv citation here},
    month = {3},
-   publisher = {arXiv},
+   journal = {arXiv preprint arXiv:2503.19740},
    title = {Surg-3M: A Dataset and Foundation Model for Perception in Surgical Settings},
    year = {2025}
 }
