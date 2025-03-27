@@ -4,16 +4,6 @@
     </a>
 </p>
 
-<p align="center">
-  <a href="https://visurg.ai/">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/04f6e2eb-1380-448e-a3f6-eed3e9dbf177">
-      <source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/68388c69-bfaa-499b-986c-32fed8bd1a63">
-      <img src="https://github.com/user-attachments/assets/04f6e2eb-1380-448e-a3f6-eed3e9dbf177" alt="Adaptive figure">
-    </picture>
-  </a>
-</p>
-
 
 [📚 Paper](https://arxiv.org/abs/2503.19740) - [🤖 Code](src) - [🤗 Model](https://huggingface.co/visurg/SurgFM) - [🌐 Website](https://surg-3m.visurg.ai/)
 
