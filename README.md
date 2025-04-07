@@ -27,9 +27,9 @@ This is the official repository for the paper [Surg-3M: A Dataset and Foundation
 
 This repository provides open access to the *Surg-3M* dataset, *Surg-FM* foundation model, and training code. 
 
-*Surg-3M* is a dataset of 4K surgical high-resolution videos (3M frames, when videos are sampled at 1fps) from 35 diverse surgical procedure types. Each video is annotated for multi-label classification, indicating the surgical procedures carried out in the video, and for binary classification, indicating if it is robotic or non-robotic. The dataset's annotations can be found in [labels.json](https://github.com/visurg-ai/surg-3m/blob/main/labels.json).
+[*Surg-3M*](https://surg-3m.visurg.ai/) is a dataset of 4K surgical high-resolution videos (3M frames, when videos are sampled at 1fps) from 35 diverse surgical procedure types. Each video is annotated for multi-label classification, indicating the surgical procedures carried out in the video, and for binary classification, indicating if it is robotic or non-robotic. The dataset's annotations can be found in [labels.json](https://github.com/visurg-ai/surg-3m/blob/main/labels.json).
 
-*Surg-FM* is an image foundation model for surgery, it receives an image as input and produces a feature vector of 1536 features as output. 
+[*Surg-FM*](https://huggingface.co/visurg/SurgFM) is an image foundation model for surgery, it receives an image as input and produces a feature vector of 1536 features as output. 
 
 <!--The website of our dataset is: [http://surg-3m.org](https://surg-3m.org)-->
 
