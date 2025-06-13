@@ -203,3 +203,7 @@ $ cd src
 $ python3 video_classifier --input 'your directory containing the downloaded videos' --output 'your path to a json file which contains classification results' --models 'video storyboard classification models'
 ```
 -->
+
+License
+-------
+The Surg-3M dataset is provided under the [Creative Commons Attribution 4.0 International (CC BY 4.0) license](https://creativecommons.org/licenses/by/4.0/).
