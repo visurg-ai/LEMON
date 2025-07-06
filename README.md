@@ -167,6 +167,71 @@ How to run our SurgFM foundation model to extract features from your video frame
 
 
 
+Tasks
+-------
+
+Based on the annotation of the Surg-3M dataset, we propose two novel surgical downstream tasks:
+1. Multi-label (35 classes) video classification of procedure types.
+2. Binary video classification of surgery types.
+
+
+**Leaderboard for the proposed tasks**  
+To establish a baseline for the two tasks proposed in Surg-3M, we conducted an evaluation of SotA approaches, which serves as a benchmark for future research endeavors.
+
+
+<table>
+  <tr>
+    <th rowspan="2" style="text-align: center;">Method</th>
+    <th colspan="2" style="text-align: center;">Procedure type</th>
+    <th colspan="2" style="text-align: center;">Surgery type</th>
+  </tr>
+  <tr>
+    <th style="text-align: center;">mAP (%)</th>
+    <th style="text-align: center;">F1-score (%)</th>
+    <th style="text-align: center;">Accuracy (%)</th>
+    <th style="text-align: center;">F1-score (%)</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><a href="https://arxiv.org/abs/1812.03982">SlowFast</a></td>
+    <td style="text-align: center;">22.0</td>
+    <td style="text-align: center;">23.9</td>
+    <td style="text-align: center;">88.5</td>
+    <td style="text-align: center;">87.5</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><a href="https://arxiv.org/abs/2102.05095">TimeSformer</a></td>
+    <td style="text-align: center;">42.1</td>
+    <td style="text-align: center;">37.5</td>
+    <td style="text-align: center;">93.2</td>
+    <td style="text-align: center;">92.7</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><a href="https://arxiv.org/abs/2112.01526">MViTv2</a></td>
+    <td style="text-align: center;">49.5</td>
+    <td style="text-align: center;">41.8</td>
+    <td style="text-align: center;">95.8</td>
+    <td style="text-align: center;">94.6</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><a href="https://arxiv.org/abs/2106.13230">Video Swin Transformer</a></td>
+    <td style="text-align: center;">51.4</td>
+    <td style="text-align: center;">47.9</td>
+    <td style="text-align: center;">98.8</td>
+    <td style="text-align: center;">98.7</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><a href="https://arxiv.org/abs/2503.19740">SurgFM-Vid (ours)</a></td>
+    <td style="text-align: center;"><strong>57.8</strong></td>
+    <td style="text-align: center;"><strong>49.3</strong></td>
+    <td style="text-align: center;"><strong>98.9</strong></td>
+    <td style="text-align: center;"><strong>98.9</strong></td>
+  </tr>
+</table>
+
+
+
+
+
 <!--
 **surgfm performance:**
 
