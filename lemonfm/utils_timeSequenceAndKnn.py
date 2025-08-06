@@ -91,7 +91,7 @@ class Dataset(VisionDataset):
     def get_time_sequence_frames(self, frame_name: str):
         """
         Get two previous and two next frames based on the current frame name.
-        Fill in with duplicates as needed to ensure exactly four frames are returned.
+        Fill in with duplicates as needed to enre exactly four frames are returned.
         """
         frames = []
         
@@ -649,8 +649,6 @@ def accuracy(output, target, topk=(1,)):
 
 
 def _no_grad_trunc_normal_(tensor, mean, std, a, b):
-    # Cut & paste from PyTorch official master until it's in a few official releases - RW
-    # Method based on https://people.sc.fsu.edu/~jburkardt/presentations/truncated_normal.pdf
     def norm_cdf(x):
         # Computes standard normal cumulative distribution function
         return (1. + math.erf(x / math.sqrt(2.))) / 2.
