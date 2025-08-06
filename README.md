@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://visurg.ai/">
-    <img src="https://github.com/user-attachments/assets/a09d3d2a-cb15-41ab-9207-d4431adcee48">
+    <img src="https://github.com/user-attachments/assets/e8b1e040-a704-4946-b33f-73b0f51f04a6">
     </a>
 </p>
 
@@ -12,7 +12,6 @@ Star ⭐ us if you like it!
 <div align="center">
   <img src="https://github.com/user-attachments/assets/6250cd6a-1404-4786-9c15-fe396265940d" width="70%" > </img>
 </div>
-
 
 
 ## News
