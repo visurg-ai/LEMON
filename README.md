@@ -138,8 +138,22 @@ You can download the LemonFM full checkpoint which contains backbone and project
 Follow the provided scripts to launch your own LemonFM training.
 
 ```bash
-$ python3 -m torch.distributed.run --nproc_per_node=8 --nnodes=1 LemonFM/LemonFM.py --arch convnext_large --data_path 'LEMON dataset lmdb path' --output_dir 'your path to store the trained foundation model' --batch_size_per_gpu 40 --num_workers 10
+$ python3 -m torch.distributed.run --nproc_per_node=8 --nnodes=1 lemonfm/lemonfm.py --arch convnext_large --data_path 'LEMON dataset lmdb path' --output_dir 'your path to store the trained foundation model' --batch_size_per_gpu 40 --num_workers 10
 ```
+
+
+
+
+** Example of fine-tuning LemonFM for surgical phase recognition:**
+
+```bash
+$ python3 downstream/train_phase_recognition_autolaparo.py --lr 1e-3 --opt adamW --nepochs 100 --bs 512 --cpdir 'path/to/store/checkpoint' --logdir 'path/to/store/log' --lmdb 'path/to/downstream_task/lmdb' --labels 'path/to/downstream_task/annotation' --seed 30 --pretrained-weights 'path/to/our/LemonFM.pth'
+```
+
+```bash
+$ python3 downstream/test_phase_recognition_autolaparo.py --lmdb 'path/to/downstream_task/lmdb' --models 'path/to/your/cpdir' --labels 'path/to/downstream_task/annotation'
+```
+
 
 
 How to run our LemonFM foundation model to extract features from your video frames
@@ -163,6 +177,7 @@ How to run our LemonFM foundation model to extract features from your video fram
    # Extract features from the image
    outputs = LemonFM(img_tensor)
    ```
+
 
 
 
