@@ -36,7 +36,7 @@ This repository provides open access to the *LEMON* dataset, *LemonFM* foundatio
 If you use our dataset, model, or code in your research, please cite our paper:
 
 ```
-@misc{che2025surg3mdatasetfoundationmodel,
+@misc{che2025lemonlargeendoscopicmonocular,
       title={LEMON: A Large Endoscopic MONocular Dataset and Foundation Model for Perception in Surgical Settings}, 
       author={Chengan Che and Chao Wang and Tom Vercauteren and Sophia Tsoka and Luis C. Garcia-Peraza-Herrera},
       year={2025},
@@ -87,7 +87,7 @@ Install dependencies to recreate our LEMON dataset
    $ cd LEMON && pip install -r requirements.txt
    ```
 
-* **Models used in data curation**, We provide the models used in our data curation pipeline to assist with constructing the LEMON dataset, including video storyboard classification models, frame classification models, and non-surgical object detection models. The models can be downloaded from [🤗 Surg3M curation models](https://huggingface.co/visurg/Surg3M_curation_models).
+* **Models used in data curation**, We provide the models used in our data curation pipeline to assist with constructing the LEMON dataset, including video storyboard classification models, frame classification models, and non-surgical object detection models. The models can be downloaded from [🤗 LEMON curation models](https://huggingface.co/visurg/LEMON_curation_models).
 
 
 LEMON dataset
