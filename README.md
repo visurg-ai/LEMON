@@ -126,8 +126,7 @@ You can use our code of the data curation pipeline and provided annotation file 
 <br>
 The video processing pipeline leading to the clean videos in the LEMON dataset is as follows:
 
-<img src="https://github.com/user-attachments/assets/5192e42e-da73-462a-8f2e-ef422121c5cf">
-
+<img src="https://github.com/user-attachments/assets/cb21d841-ad49-4834-b77e-dbc24fe6699e">
 
 
 LemonFM model
