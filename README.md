@@ -25,11 +25,11 @@ Star ⭐ us if you like it!
 
 This is the official repository for the paper [LEMON: A Large Endoscopic MONocular Dataset and Foundation Model for Perception in Surgical Settings](https://arxiv.org/abs/2503.19740).
 
-This repository provides open access to the *LEMON* dataset, *Surg-FM* foundation model, and training code. 
+This repository provides open access to the *LEMON* dataset, *LemonFM* foundation model, and training code. 
 
-[*LEMON*](https://surg-3m.visurg.ai/) is a dataset of 4K surgical high-resolution videos (3M frames, when videos are sampled at 1fps) from 35 diverse surgical procedure types. Each video is annotated for multi-label classification, indicating the surgical procedures carried out in the video, and for binary classification, indicating if it is robotic or non-robotic. The dataset's annotations can be found in [labels.json](https://github.com/visurg-ai/LEMON/blob/main/labels.json).
+[*LEMON*](https://surg-3m.visurg.ai/) is a dataset of 4K surgical high-resolution videos totaling 938 hours from 35 diverse surgical procedure types. Each video is annotated for multi-label classification, indicating the surgical procedures carried out in the video, and for binary classification, indicating if it is robotic or non-robotic. The dataset's annotations can be found in [labels.json](https://github.com/visurg-ai/LEMON/blob/main/labels.json).
 
-[*Surg-FM*](https://huggingface.co/visurg/LemonFM) is an image foundation model for surgery, it receives an image as input and produces a feature vector of 1536 features as output. 
+[*LemonFM*](https://huggingface.co/visurg/LemonFM) is an image foundation model for surgery, it receives an image as input and produces a feature vector of 1536 features as output. 
 
 <!--The website of our dataset is: [http://LEMON.org](https://LEMON.org)-->
 
@@ -37,7 +37,7 @@ If you use our dataset, model, or code in your research, please cite our paper:
 
 ```
 @misc{che2025surg3mdatasetfoundationmodel,
-      title={LEMON: A Dataset and Foundation Model for Perception in Surgical Settings}, 
+      title={LEMON: A Large Endoscopic MONocular Dataset and Foundation Model for Perception in Surgical Settings}, 
       author={Chengan Che and Chao Wang and Tom Vercauteren and Sophia Tsoka and Luis C. Garcia-Peraza-Herrera},
       year={2025},
       eprint={2503.19740},
@@ -49,7 +49,7 @@ If you use our dataset, model, or code in your research, please cite our paper:
 
 Abstract
 --------
-Advancements in computer-assisted surgical procedures heavily rely on accurate visual data interpretation from camera systems used during surgeries. Traditional open-access datasets focusing on surgical procedures are often limited by their small size, typically consisting of fewer than 100 videos with less than 100K images. To address these constraints, a new dataset called LEMON has been compiled using a novel aggregation pipeline that collects high-resolution videos from online sources. Featuring an extensive collection of over 4K surgical videos and more than 3 million high-quality images from multiple procedure types, LEMON offers a comprehensive resource surpassing existing alternatives in size and scope, including two novel tasks. To demonstrate the effectiveness of this dataset, we present LemonFM, a self-supervised foundation model pretrained on LEMON that achieves impressive results in downstream tasks such as surgical phase recognition, action recognition, and tool presence detection. Combining key components from ConvNeXt, DINO, and an innovative augmented distillation method, LemonFM exhibits exceptional performance compared to specialist architectures across various benchmarks. Our experimental results show that LemonFM outperforms state-of-the-art models in multiple downstream tasks, including significant gains in surgical phase recognition (+8.9pp, +4.7pp, and +3.9pp of Jaccard in AutoLaparo, M2CAI16, and Cholec80), action recognition (+3.1pp of mAP in CholecT50) and tool presence detection (+4.6pp of mAP in Cholec80). Moreover, even when using only half of the data, LemonFM outperforms state-of-the-art models in AutoLaparo and achieves state-of-the-art performance in Cholec80. Both LEMON and LemonFM have significant potential to accelerate progress towards developing autonomous robotic surgery systems.
+Traditional open-access datasets focusing on surgical procedures are often limited by their small size, typically consisting of fewer than 100 videos and less than 30 hours of footage, which leads to poor model generalization. To address this constraint, a new dataset called LEMON has been compiled using a novel aggregation pipeline that collects high-resolution videos from online sources. Featuring an extensive collection of over 4K surgical videos totaling 938 hours (85 million frames) of high-quality footage across multiple procedure types, LEMON offers a comprehensive resource surpassing existing alternatives in size and scope, including two novel downstream tasks. To demonstrate the effectiveness of this diverse dataset, we introduce LemonFM, a foundation model pretrained on LEMON using a novel self-supervised augmented knowledge distillation approach. LemonFM consistently outperforms existing surgical foundation models across four downstream tasks and six datasets, achieving significant gains in surgical phase recognition (+9.5pp, +9.4pp, and +8.4pp of Jaccard in AutoLaparo, M2CAI16, and Cholec80), surgical action recognition (+4.4pp of mAP in CholecT50), surgical tool presence detection (+5.3pp and +10.2pp of mAP in Cholec80 and GraSP), and surgical semantic segmentation (+8.3pp of mDice in CholecSeg8k). LEMON and LemonFM will serve as foundational resources for the research community and industry, accelerating progress in developing autonomous robotic surgery systems and ultimately contributing to safer and more accessible surgical care worldwide.
 
 
 <br>
