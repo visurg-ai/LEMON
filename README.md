@@ -97,7 +97,7 @@ LEMON dataset
 
 You can use our code of the data curation pipeline and provided annotation file (["labels.json"](https://github.com/visurg-ai/LEMON/blob/main/labels.json)) to recreate the whole LEMON dataset.
 
-1. Get your Youtube cookie:
+1. Get your YouTube cookie:
 
    You need to provide a "cookies.txt" file if you want to download videos that require Youtube login. 
 
