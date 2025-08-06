@@ -133,18 +133,16 @@ LemonFM model
 -------------
 You can download the LemonFM full checkpoint which contains backbone and projection head weights for both student and teacher networks at [🤗 LemonFM](https://huggingface.co/visurg/LemonFM).
 
-**LemonFM training:**
+**LemonFM pretraining:**
 
-Follow the provided scripts to launch your own LemonFM training.
 
 ```bash
 $ python3 -m torch.distributed.run --nproc_per_node=8 --nnodes=1 lemonfm/lemonfm.py --arch convnext_large --data_path 'LEMON dataset lmdb path' --output_dir 'your path to store the trained foundation model' --batch_size_per_gpu 40 --num_workers 10
 ```
 
 
+**Fine-tuning LemonFM for surgical phase recognition:**
 
-
-** Example of fine-tuning LemonFM for surgical phase recognition:**
 
 ```bash
 $ python3 downstream/train_phase_recognition_autolaparo.py --lr 1e-3 --opt adamW --nepochs 100 --bs 512 --cpdir 'path/to/store/checkpoint' --logdir 'path/to/store/log' --lmdb 'path/to/downstream_task/lmdb' --labels 'path/to/downstream_task/annotation' --seed 30 --pretrained-weights 'path/to/our/LemonFM.pth'
