@@ -1,9 +1,3 @@
-"""
-@brief   Summarise all the videos of the dataset into a collage. This collage
-         will be used to annotate informative/non-informative videos.
-@date    19 Dec 2023.
-"""
-
 import argparse
 import os
 import pathlib
@@ -33,9 +27,9 @@ def help(short_option):
     @returns The string with the help information for each command line option.
     """
     help_msg = {
-        '-i': 'Path to the root of the LEMON dataset (required: True)',
-        '-j': 'Path to the root of the LEMON dataset json (required: True)',
-        '-o': 'Path to the processed video output of the LEMON dataset (required: True)',
+        '-i': 'Path to the root of the  dataset (required: True)',
+        '-j': 'Path to the root of the  dataset json (required: True)',
+        '-o': 'Path to the processed video output of the  dataset (required: True)',
         '--classify-models': 'Path to the .pt models file for frame classifier (required: True)',
         '--segment-models': 'Path to the .pt models file for uninfor part segmentation (required: True)',
     }
@@ -45,7 +39,7 @@ def help(short_option):
 def parse_cmdline_params():
     """@returns The argparse args object."""
     # Create command line parser
-    parser = argparse.ArgumentParser(description='LEMON dataset video classifier')
+    parser = argparse.ArgumentParser(description=' dataset video classifier')
     parser.add_argument('-i', '--input', required=True, type=str, 
                         help=help('-i'))
     parser.add_argument('-j', '--input-json', required=True, type=str, 
@@ -100,54 +94,38 @@ def load_dataset(images, test_preproc_tf, bs: int, num_workers: int = 2):
 
 
 
-def cut_video(arr):
-    # Find the indices of the surgical (0) elements
+def cut_video(arr, frame_interval):
+    min_consecutive_frames = 3 * frame_interval
+
     informative_indices = np.where(arr != 1)[0]
 
-    # If there are no informative elements, return an empty array and an empty list of indices
-    if len(informative_indices) < 3:
-        print("ERROR, continous surgical frames less than 3")
+
+    if len(informative_indices) < min_consecutive_frames:
+        print(f"ERROR, continuous informative frames less than {min_consecutive_frames}")
         return None, None, None
 
-    # Find the first continuous informative frames that are at least 3 in a row from the beginning
     start_index = 0
-    for i in range(len(informative_indices) - 2):
-        if informative_indices[i + 2] - informative_indices[i] == 2:
+    for i in range(len(informative_indices) - min_consecutive_frames + 1):
+
+        if informative_indices[i + min_consecutive_frames - 1] - informative_indices[i] == min_consecutive_frames - 1:
             start_index = informative_indices[i]
             break
 
-    # Find the last continuous informative frames that are at least 3 in a row from the end
-    end_index = len(arr)
-    for i in range(len(informative_indices) - 1, 1, -1):
-        if informative_indices[i] - informative_indices[i - 2] == 2:
+
+    end_index = len(arr) - 1
+    for i in range(len(informative_indices) - 1, min_consecutive_frames - 2, -1):
+        if informative_indices[i] - informative_indices[i - min_consecutive_frames + 1] == min_consecutive_frames - 1:
             end_index = informative_indices[i]
             break
 
-    # Slice the array to keep only the selected informative elements
     processed_arr = arr[start_index:end_index + 1]
 
     return processed_arr, start_index, end_index
 
 
-# Function to create a new video file from a list of frames
-def create_video(frames, output, frame_rate: int = 1):
-    # Get the height and width of the frames
-    height, width, _ = frames[0].shape
-
-    # Define the video codec and create VideoWriter object
-    fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # Change codec as needed
-    out = cv2.VideoWriter(output, fourcc, frame_rate, (width, height))
-
-    # Write each frame to the video file
-    for frame in frames:
-        out.write(frame)
-
-    # Release the VideoWriter object
-    out.release()
-
 
 def extract_frames(video_path):
-    #print("start extracting frames")
+    print("start extracting frames")
     frames = []
     cap = cv2.VideoCapture(video_path)
     fps = cap.get(cv2.CAP_PROP_FPS)
@@ -162,9 +140,7 @@ def extract_frames(video_path):
         if not ret:
             break
         
-        if count % frame_rate == 0:  # Only keep frames at intervals of frame_rate
-            frames.append(frame)
-            number += 1
+        frames.append(frame)
         count += 1
 
     cap.release
@@ -174,17 +150,7 @@ def extract_frames(video_path):
 
 
 def non_max_suppression(bboxes, scores, iou_threshold):
-    """
-    Apply non-maximum suppression to remove redundant bounding boxes.
-    
-    Args:
-        bboxes (List[List[float]]): List of bounding boxes in the format [x_min, y_min, x_max, y_max].
-        scores (List[float]): List of confidence scores corresponding to each bounding box.
-        iou_threshold (float): Threshold for intersection-over-union (IoU) to determine overlapping boxes.
-    
-    Returns:
-        List[int]: Indices of the selected bounding boxes after NMS.
-    """
+
     selected_indices = []
     
     # Sort bounding boxes by confidence score
@@ -205,16 +171,7 @@ def non_max_suppression(bboxes, scores, iou_threshold):
     return selected_indices
 
 def calculate_iou(bbox1, bbox2):
-    """
-    Calculate the intersection-over-union (IoU) between two bounding boxes.
-    
-    Args:
-        bbox1 (List[float]): Coordinates of the first bounding box in the format [x_min, y_min, x_max, y_max].
-        bbox2 (List[float]): Coordinates of the second bounding box in the format [x_min, y_min, x_max, y_max].
-    
-    Returns:
-        float: Intersection-over-union (IoU) score.
-    """
+
     # Calculate intersection area
     x_min = max(bbox1[0], bbox2[0])
     y_min = max(bbox1[1], bbox2[1])
@@ -234,14 +191,7 @@ def calculate_iou(bbox1, bbox2):
 
 def build_preprocessing_transforms(size: int = 384, randaug_n: int = 2, 
                                    randaug_m: int = 14):
-    """
-    @brief Preprocessing and data augmentation.
 
-    @param[in]  size  Target size of the images to be resized prior 
-                      processing by the network.
-
-    @returns a tuple of two transforms, one for training and another one for testing.
-    """
     
     # Preprocessing for testing
     valid_preproc_tf = torchvision.transforms.Compose([
@@ -253,10 +203,7 @@ def build_preprocessing_transforms(size: int = 384, randaug_n: int = 2,
     return valid_preproc_tf
 
 def build_model(nclasses: int = 2, mode: str = None, segment_model: str = None):
-    """
-    @param[in]  nclasses 
-    @param[in]  mode  set mode for frame classification or uninformative part mask
-    """
+
     if mode == 'classify':
         #net of Resnet18
         net = torchvision.models.resnet18(num_classes = nclasses)
@@ -274,13 +221,7 @@ def validate_cmdline_params(args):
 
 
 def process_frames(path: str, informative_videos:list, test_preproc_tf = None, classify_models = None, segment_models = None, output_dir = None, classes = None, size: int = 384, threshold = 0.7):
-    """
-    @brief Recursive function to computes the summary of each video file in the
-           dataset and write it into a file with the same name but
-           .png extension.
-    @param[in]  path  Path to the root folder of the tree.
-    @returns nothing.
-    """ 
+
     # If it is a file, and the MD5 has not been already computed
     if os.path.isfile(path):
         # Summarise video
@@ -304,7 +245,7 @@ def process_frames(path: str, informative_videos:list, test_preproc_tf = None, c
 
             # Create a VideoWriter object to write the processed frames to a new video file
             fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # You can choose a different codec based on your needs
-            out = cv2.VideoWriter(os.path.join(output_dir, file_name), fourcc, 1, (frame_width, frame_height))
+            out = cv2.VideoWriter(os.path.join(output_dir, file_name), fourcc, frame_interval, (frame_width, frame_height))
 
 
             predicted_results = {}
@@ -328,7 +269,7 @@ def process_frames(path: str, informative_videos:list, test_preproc_tf = None, c
                     predicted_array = output_torch.detach().cpu().numpy()
                     result = np.concatenate((result, predicted_array))
                 result = result.flatten()
-                cutted_result, start_index, end_index = cut_video(result)
+                cutted_result, start_index, end_index = cut_video(result, frame_interval)
                 cutted_images = images[start_index: end_index + 1]
 
             print(f"start frame preprocessing {file_name}...")
