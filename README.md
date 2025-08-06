@@ -86,7 +86,7 @@ Install dependencies to recreate our LEMON dataset
    $ cd LEMON && pip install -r requirements.txt
    ```
 
-* **Models used in data curation**, We provide the models used in our data curation pipeline to assist with constructing the LEMON dataset, including video storyboard classification models, frame classification models, and non-surgical object detection models. The models can be downloaded from [🤗 LEMON curation models](https://huggingface.co/visurg/LEMON_curation_models).
+* **Models used in data curation.** We provide the models used in our data curation pipeline to assist with constructing the LEMON dataset, including video storyboard classification models, frame classification models, and non-surgical object detection models. The models can be downloaded from [🤗 LEMON curation models](https://huggingface.co/visurg/LEMON_curation_models).
 
 
 LEMON dataset
