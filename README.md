@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://visurg.ai/">
-    <img src="https://github.com/user-attachments/assets/f4f8b0e3-023a-42b0-a931-378e5e174bb3">
+    <img src="https://github.com/user-attachments/assets/62c4a314-74cf-47f6-b52b-601ce4f38159">
     </a>
 </p>
 
