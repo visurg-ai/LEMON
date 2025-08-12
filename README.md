@@ -1,9 +1,8 @@
 <p align="center">
     <a href="https://visurg.ai/">
-    <img src="https://github.com/user-attachments/assets/620d7fe6-fca9-401b-81c0-a690abff070b">
+    <img src="https://github.com/user-attachments/assets/f4f8b0e3-023a-42b0-a931-378e5e174bb3">
     </a>
 </p>
-
 
 [📚 Paper](https://arxiv.org/abs/2503.19740) - [🤖 Code](src) - [🤗 Model](https://huggingface.co/visurg/LemonFM) - [🌐 Website](https://LEMON.visurg.ai/)
 
