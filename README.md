@@ -281,6 +281,17 @@ $ python3 video_classifier --input 'your directory containing the downloaded vid
 ```
 -->
 
+
+Ethics
+-------
+* Sources. All the videos we collected from YouTube are from medical institutions or verified surgeons who have to obtain appropriate patient consent. 
+
+* Curation and identifiability. During data curation we removed all out-of-body views, patient identifiers, and other nonsurgical content, and then conducted a manual review. Because the dataset contains only intra-operative endoscopic views and is anonymized, to the best of our knowledge, patients are not identifiable with current methods. 
+
+* Regulatory. In many jurisdictions, including the EU, UK, US, and China, sharing non-identifiable data acquired for routine medical purposes does not need patient consent and is consistent with the GDPR.
+
+* Opt out process. We will provide an online form that allows stakeholders to request the removal of their videos from our dataset. Also, if a source video is removed from YouTube, we will remove the corresponding items from our dataset.
+
 License
 -------
 The LEMON dataset is provided under the [Creative Commons Attribution 4.0 International (CC BY 4.0) license](https://creativecommons.org/licenses/by/4.0/).
