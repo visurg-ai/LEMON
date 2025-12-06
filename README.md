@@ -93,7 +93,7 @@ Install dependencies to recreate our LEMON dataset
 LEMON dataset
 --------------------------
 
-> Researchers working in academic institutions can request direct access to the full LEMON dataset in LMDB format for non-commercial purposes by filling the request form in our [🌐 Website](https://LEMON.visurg.ai/) and [🤗 HuggingFace](https://huggingface.co/datasets/visurg/LEMON))
+> Researchers working in academic institutions can request direct access to the full LEMON dataset for non-commercial purposes by filling the request form in our [🌐 Website](https://LEMON.visurg.ai/) and [🤗 HuggingFace](https://huggingface.co/datasets/visurg/LEMON))
 
 You can use our code of the data curation pipeline and provided annotation file (["labels.json"](https://github.com/visurg-ai/LEMON/blob/main/labels.json)) to recreate the whole LEMON dataset.
 
