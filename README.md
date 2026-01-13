@@ -5,7 +5,7 @@
 </p>
 
 
-[📚 Paper](https://arxiv.org/abs/2503.19740) - [🤖 Code](src) - [🤗 Model](https://huggingface.co/visurg/LemonFM) - [🌐 Website](https://LEMON.visurg.ai/)
+[📚 Paper](https://arxiv.org/abs/2503.19740) - [🤖 Code](src) - [🤗 Model](https://huggingface.co/visurg/LemonFM) - [🌐 Website](https://LEMON.visurg.ai/) - [🤗 Dataset](https://huggingface.co/datasets/visurg/LEMON) 
 
 Star ⭐ us if you like it!
 
