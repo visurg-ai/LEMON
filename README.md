@@ -28,7 +28,7 @@ This is the official repository for the CVPR 2026 paper "[LEMON: A Large Endosco
 
 This repository provides open access to the *LEMON* dataset, *LemonFM* foundation model, and training code. 
 
-[*LEMON*](https://surg-3m.visurg.ai/) is a dataset of 4K surgical high-resolution videos totaling 938 hours from 35 diverse surgical procedure types. Each video is annotated for multi-label classification, indicating the surgical procedures carried out in the video, and for binary classification, indicating if it is robotic or non-robotic. The dataset's annotations can be found in [labels.json](https://github.com/visurg-ai/LEMON/blob/main/labels.json).
+[*LEMON*](https://huggingface.co/datasets/visurg/LEMON) is a dataset of over 4K surgical high-resolution videos totaling 938 hours from 35 diverse surgical procedure types. Each video is annotated for multi-label classification, indicating the surgical procedures carried out in the video, and for binary classification, indicating if it is robotic or non-robotic. The dataset's annotations can be found in [labels.json](https://github.com/visurg-ai/LEMON/blob/main/labels.json).
 
 [*LemonFM*](https://huggingface.co/visurg/LemonFM) is an image foundation model for surgery, it receives an image as input and produces a feature vector of 1536 features as output. 
 
