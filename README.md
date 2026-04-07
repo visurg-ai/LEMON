@@ -62,30 +62,12 @@ Diversity and procedure prevalence in LEMON:
 
 Install dependencies to recreate our LEMON dataset
 --------------------------------------------------
-<!--
-* If you want to use Docker**, follow the next steps to download our container:
-
-   ```bash
-   # Download the repo
-   $ git clone git@github.com:visurg-ai/LEMON.git
-   $ cd LEMON/docker
-
-   # Build the docker image
-   $ docker build --build-arg USER=$(whoami) --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t chengan/LEMON:latest .
-
-   # Run videosum Docker container
-   $ docker run --volume $HOME:/mnt/user_home --name LEMON --runtime nvidia chengan/LEMON:latest &
-
-   # Execute the docker container and get into the terminal
-   $ docker exec --user $(whoami) --workdir $HOME -it LEMON /bin/zsh
-   ```
--->
 
 * Install the following dependencies in your local setup:
 
    ```bash
-   $ git clone git@github.com:visurg-ai/LEMON.git
-   $ cd LEMON && pip install -r requirements.txt
+   git clone git@github.com:visurg-ai/LEMON.git
+   cd LEMON && pip install -r requirements.txt
    ```
 
 * **Models used in data curation.** We provide the models used in our data curation pipeline to assist with constructing the LEMON dataset, including video storyboard classification models, frame classification models, and non-surgical object detection models. The models can be downloaded from [🤗 LEMON curation models](https://huggingface.co/visurg/LEMON_curation_models).
@@ -108,20 +90,20 @@ You can use our code of the data curation pipeline and provided annotation file 
 2. Download the annotation file (["labels.json"](https://github.com/visurg-ai/LEMON/blob/main/labels.json)) and use the video downloader to download the original selected Youtube videos.
 
    ```bash
-   $ python3 src/video_downloader.py --video-path '../labels.json' --output 'your path to store the downloaded videos' --cookies 'your YouTube cookie file'
+   python3 src/video_downloader.py --video-path '../labels.json' --output 'your path to store the downloaded videos' --cookies 'your YouTube cookie file'
    ```
 
 3. Curate the downloaded original videos as LEMON video dataset. In detail, use the video_processor to classify each frame as either 'surgical' or 'non-surgical', then remove the beginning and end segments of non-surgical content from the videos, and mask the non-surgical regions in 'surgical' frames and the entire 'non-surgical' frames.
 
    ```bash
-   $ python3 src/video_processor.py --input 'your original downloaded video storage path' --input-json '../labels.json' --output 'your path to store the curated videos and their corresponding frame annotation files' --classify-models 'frame classification model' --segment-models 'non-surgical object detection models'
+   python3 src/video_processor.py --input 'your original downloaded video storage path' --input-json '../labels.json' --output 'your path to store the curated videos and their corresponding frame annotation files' --classify-models 'frame classification model' --segment-models 'non-surgical object detection models'
    ```
 
 
 4. Process the LEMON video dataset as LEMON image dataset (For foundation model pre-training).
 
    ```bash
-   $ python3 src/create_lmdb_LEMON.py --video-folder 'your directory containing the curated videos and their corresponding frame annotation files' --output-json 'your path for the json file to verify the videos and labels alignment' --lmdb-path 'your lmdb storage path'
+   python3 src/create_lmdb_LEMON.py --video-folder 'your directory containing the curated videos and their corresponding frame annotation files' --output-json 'your path for the json file to verify the videos and labels alignment' --lmdb-path 'your lmdb storage path'
    ```
 
 <br>
@@ -138,7 +120,7 @@ You can download the LemonFM full checkpoint which contains backbone and project
 
 
 ```bash
-$ python3 -m torch.distributed.run --nproc_per_node=8 --nnodes=1 lemonfm/lemonfm.py --arch convnext_large --data_path 'LEMON dataset lmdb path' --output_dir 'your path to store the trained foundation model' --batch_size_per_gpu 40 --num_workers 10
+python3 -m torch.distributed.run --nproc_per_node=8 --nnodes=1 lemonfm/lemonfm.py --arch convnext_large --data_path 'LEMON dataset lmdb path' --output_dir 'your path to store the trained foundation model' --batch_size_per_gpu 40 --num_workers 10
 ```
 
 
@@ -146,11 +128,11 @@ $ python3 -m torch.distributed.run --nproc_per_node=8 --nnodes=1 lemonfm/lemonfm
 
 
 ```bash
-$ python3 downstream/train_phase_recognition_autolaparo.py --lr 1e-3 --opt adamW --nepochs 100 --bs 512 --cpdir 'path/to/store/checkpoint' --logdir 'path/to/store/log' --lmdb 'path/to/downstream_task/lmdb' --labels 'path/to/downstream_task/annotation' --seed 30 --pretrained-weights 'path/to/our/LemonFM.pth'
+python3 downstream/train_phase_recognition_autolaparo.py --lr 1e-3 --opt adamW --nepochs 100 --bs 512 --cpdir 'path/to/store/checkpoint' --logdir 'path/to/store/log' --lmdb 'path/to/downstream_task/lmdb' --labels 'path/to/downstream_task/annotation' --seed 30 --pretrained-weights 'path/to/our/LemonFM.pth'
 ```
 
 ```bash
-$ python3 downstream/test_phase_recognition_autolaparo.py --lmdb 'path/to/downstream_task/lmdb' --models 'path/to/your/cpdir' --labels 'path/to/downstream_task/annotation'
+python3 downstream/test_phase_recognition_autolaparo.py --lmdb 'path/to/downstream_task/lmdb' --models 'path/to/your/cpdir' --labels 'path/to/downstream_task/annotation'
 ```
 
 
