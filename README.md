@@ -18,7 +18,7 @@ Star ⭐ us if you like it!
 
 <!-- XX/March/2025. The [HuggingFace models and demo](TODO) are released. -->
 <!--<br>-->
-* 23/Feb/2026. **LEMON** is accepted to **CVPR2026** main conference.
+* 23/Feb/2026. **LEMON** is accepted to **CVPR 2026** main conference.
 * 06/Aug/2025. Our project is now known as **LEMON**, formerly Surg-3M.
 * 25/Mar/2025. The [arXiv](https://arxiv.org/abs/2503.19740) version of the paper is released.
 
