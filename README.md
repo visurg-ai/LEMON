@@ -134,32 +134,38 @@ python3 -m torch.distributed.run --nproc_per_node=8 --nnodes=1 lemonfm/lemonfm.p
 📊 Evaluation
 -------------
 
-LMDB is used by default for efficient data loading. Convert raw datasets with the following script:
+1. Data Preparation
 
-```bash
-python src/create_lmdb.py \
-    --image-folder [RAW_DATA_ROOT]/AutoLaparo/frames \
-    --label-json [RAW_DATA_ROOT]/AutoLaparo/AutoLaparo.json \
-    --lmdb-path [LMDB_OUTPUT_ROOT]/AutoLaparo \
-    --image-size 224 224
-```
+    LMDB is used by default for efficient data loading. Convert raw datasets with the following script:
+    
+    ```bash
+    python src/create_lmdb.py \
+        --image-folder [RAW_DATA_ROOT]/AutoLaparo/frames \
+        --label-json [RAW_DATA_ROOT]/AutoLaparo/AutoLaparo.json \
+        --lmdb-path [LMDB_OUTPUT_ROOT]/AutoLaparo \
+        --image-size 224 224
+    ```
 
-**Surgical phase recognition:**
+2. Fine-tuning and Evaluation
 
-
-```bash
-python3 downstream/train_phase_recognition_autolaparo.py --lr 1e-3 --opt adamW --nepochs 100 --bs 512 --cpdir 'path/to/store/checkpoint' --logdir 'path/to/store/log' --lmdb 'path/to/downstream_task/lmdb' --labels 'path/to/downstream_task/annotation' --seed 30 --pretrained-weights 'path/to/our/LemonFM.pth'
-
-python3 downstream/test_phase_recognition_autolaparo.py --lmdb 'path/to/downstream_task/lmdb' --models 'path/to/your/cpdir' --labels 'path/to/downstream_task/annotation'
-```
-
-
-
-**Surgical tool presence detection:**
-
-
-
-**Surgical action recognition:**
+    The following scripts provide Fine-tuning and evaluation code for LemonFM using a linear head for surgical phase recognition, tool presence detection, and action recognition. For integrating fine-tuned LemonFM with a TCN head, refer to the official [TeCNO repository](https://github.com/tobiascz/TeCNO).
+    
+    **Surgical phase recognition:**
+    
+    
+    ```bash
+    python3 downstream/train_phase_recognition_autolaparo.py --lr 1e-3 --opt adamW --nepochs 100 --bs 512 --cpdir 'path/to/store/checkpoint' --logdir 'path/to/store/log' --lmdb 'path/to/downstream_task/lmdb' --labels 'path/to/downstream_task/annotation' --seed 30 --pretrained-weights 'path/to/our/LemonFM.pth'
+    
+    python3 downstream/test_phase_recognition_autolaparo.py --lmdb 'path/to/downstream_task/lmdb' --models 'path/to/your/cpdir' --labels 'path/to/downstream_task/annotation'
+    ```
+    
+    
+    
+    **Surgical tool presence detection:**
+    
+    
+    
+    **Surgical action recognition:**
 
 
 
