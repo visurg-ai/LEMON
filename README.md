@@ -15,7 +15,7 @@ Star ⭐ us if you like it!
 </div>
 
 
-## News
+## 💡 News
 
 <!-- XX/March/2025. The [HuggingFace models and demo](TODO) are released. -->
 <!--<br>-->
@@ -152,7 +152,7 @@ python3 -m torch.distributed.run --nproc_per_node=8 --nnodes=1 lemonfm/lemonfm.p
 
     The following scripts provide Fine-tuning and evaluation code for LemonFM using a linear head for surgical phase recognition, tool presence detection, and action recognition. For integrating fine-tuned LemonFM with a TCN head, refer to the official [TeCNO repository](https://github.com/tobiascz/TeCNO).
     
-    **Surgical phase recognition:**
+    👉 **Surgical phase recognition:**
     
     
     ```bash
@@ -163,7 +163,7 @@ python3 -m torch.distributed.run --nproc_per_node=8 --nnodes=1 lemonfm/lemonfm.p
     
     
     
-    **Surgical tool presence detection:**
+    👉 **Surgical tool presence detection:**
 
     ```bash
     python3 downstream/train_tool_detection.py --lr 1e-4 --opt adam --nepochs 50 --bs 256 --cpdir 'path/to/store/checkpoint' --logdir 'path/to/store/log' --cpint 5 --kfold 5 --lmdb 'path/to/downstream_task/lmdb' --labels 'path/to/downstream_task/annotation' --seed 42 --pretrained-weights 'path/to/our/LemonFM.pth'
@@ -172,7 +172,7 @@ python3 -m torch.distributed.run --nproc_per_node=8 --nnodes=1 lemonfm/lemonfm.p
     ```
     
     
-    **Surgical action recognition:**
+    👉 **Surgical action recognition:**
 
 
 
