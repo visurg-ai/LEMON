@@ -9,6 +9,7 @@
 
 Star ⭐ us if you like it!
 
+
 <div align="center">
   <img src="https://github.com/user-attachments/assets/6250cd6a-1404-4786-9c15-fe396265940d" width="70%" > </img>
 </div>
@@ -18,7 +19,8 @@ Star ⭐ us if you like it!
 
 <!-- XX/March/2025. The [HuggingFace models and demo](TODO) are released. -->
 <!--<br>-->
-* 23/Feb/2026. **LEMON** is accepted to **CVPR 2026** main conference.
+* 23/Feb/2026. 🚨 Our latest work, [**PL-Stitch**](https://github.com/visurg-ai/PL-Stitch), has also been accepted to the CVPR 2026 main conference! It introduces a novel SSL pretraining method for procedural video understanding, delivering a more powerful and efficient foundation model for perception in surgical settings.
+* 23/Feb/2026. 🚨 **LEMON** is accepted to **CVPR 2026** main conference!
 * 06/Aug/2025. Our project is now known as **LEMON**, formerly Surg-3M.
 * 25/Mar/2025. The [arXiv](https://arxiv.org/abs/2503.19740) version of the paper is released.
 
