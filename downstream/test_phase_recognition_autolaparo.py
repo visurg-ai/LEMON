@@ -22,7 +22,7 @@ from torchvision.datasets.vision import VisionDataset
 from torchvision.transforms import ToTensor, Lambda
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from statistics import stdev
-from .load_lmdb_autolaparo import StringToIndexTransform, build_preprocessing_transforms, build_model
+from .load_lmdb import StringToIndexTransform, build_preprocessing_transforms, build_model
 
 class TestDataset(VisionDataset):
     def __init__(

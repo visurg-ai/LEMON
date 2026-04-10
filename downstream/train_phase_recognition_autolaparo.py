@@ -20,7 +20,7 @@ import json
 from sklearn.metrics import f1_score, accuracy_score
 
 
-from .load_lmdb_autolaparo import Dataset, StringToIndexTransform, SubsetDataset, BalancedBatchSampler, EarlyStopping, build_model, valid, setup_tensorboard, build_preprocessing_transforms
+from .load_lmdb import Dataset, StringToIndexTransform, SubsetDataset, BalancedBatchSampler, EarlyStopping, build_model, valid, setup_tensorboard, build_preprocessing_transforms
 
 
 
