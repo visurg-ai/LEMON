@@ -60,7 +60,7 @@ Diversity and procedure prevalence in LEMON:
 <img src="https://github.com/user-attachments/assets/67322046-5515-47e1-bb3f-621892c8608c">
 
 
-Install dependencies to recreate our LEMON dataset
+🔧 Install dependencies to recreate our LEMON dataset
 --------------------------------------------------
 
 * Install the following dependencies in your local setup:
@@ -73,7 +73,7 @@ Install dependencies to recreate our LEMON dataset
 * **Models used in data curation.** We provide the models used in our data curation pipeline to assist with constructing the LEMON dataset, including video storyboard classification models, frame classification models, and non-surgical object detection models. The models can be downloaded from [🤗 LEMON curation models](https://huggingface.co/visurg/LEMON_curation_models).
 
 
-LEMON dataset
+🗂️ LEMON dataset
 --------------------------
 
 > Researchers working in academic institutions can request direct access to the full LEMON dataset for non-commercial purposes by filling the request form in our [🌐 Website](https://LEMON.visurg.ai/) and [🤗 HuggingFace](https://huggingface.co/datasets/visurg/LEMON))
@@ -112,19 +112,39 @@ The video processing pipeline leading to the clean videos in the LEMON dataset i
 <img src="https://github.com/user-attachments/assets/cb21d841-ad49-4834-b77e-dbc24fe6699e">
 
 
-LemonFM model
--------------
+
+🚀 LemonFM model
+--------------
+
+🤗 **Model Checkpoints:**
+
 You can download the LemonFM full checkpoint which contains backbone and projection head weights for both student and teacher networks at [🤗 LemonFM](https://huggingface.co/visurg/LemonFM).
 
-**LemonFM pretraining:**
 
+🚀 **Pretraining Execution:**
+
+To launch the pretraining routine, use `torch.distributed.run`. Ensure the `--data_path` and `--output_dir` parameters are mapped to your local environment.
 
 ```bash
 python3 -m torch.distributed.run --nproc_per_node=8 --nnodes=1 lemonfm/lemonfm.py --arch convnext_large --data_path 'LEMON dataset lmdb path' --output_dir 'your path to store the trained foundation model' --batch_size_per_gpu 40 --num_workers 10
 ```
 
 
-**Fine-tuning LemonFM for surgical phase recognition:**
+
+📊 Evaluation
+-------------
+
+LMDB is used by default for efficient data loading. Convert raw datasets with the following script:
+
+```bash
+python src/create_lmdb.py \
+    --image-folder [RAW_DATA_ROOT]/AutoLaparo/frames \
+    --label-json [RAW_DATA_ROOT]/AutoLaparo/AutoLaparo.json \
+    --lmdb-path [LMDB_OUTPUT_ROOT]/AutoLaparo \
+    --image-size 224 224
+```
+
+**Fine-tuning for surgical phase recognition:**
 
 
 ```bash
@@ -134,6 +154,13 @@ python3 downstream/train_phase_recognition_autolaparo.py --lr 1e-3 --opt adamW -
 ```bash
 python3 downstream/test_phase_recognition_autolaparo.py --lmdb 'path/to/downstream_task/lmdb' --models 'path/to/your/cpdir' --labels 'path/to/downstream_task/annotation'
 ```
+
+
+**Fine-tuning for surgical tool presence detection:**
+
+
+
+**Fine-tuning for surgical action recognition:**
 
 
 
