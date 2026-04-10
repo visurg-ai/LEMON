@@ -174,6 +174,12 @@ python3 -m torch.distributed.run --nproc_per_node=8 --nnodes=1 lemonfm/lemonfm.p
     
     👉 **Surgical action recognition:**
 
+   ```bash
+    python3 downstream/train_cholecT50_action.py --lr 1e-4 --opt adam --nepochs 50 --bs 256 --cpdir 'path/to/store/checkpoint' --logdir 'path/to/store/log' --cpint 5 --kfold 5 --dataset-dir 'path/to/CholecT50/dataset' --pretrained-weights 'path/to/our/LemonFM.pth'
+    
+    python3 downstream/test_cholecT50_action.py --dataset-dir 'path/to/CholecT50/dataset' --models 'path/to/your/cpdir' --bs 256 --kfold 5 --pretrained-weights 'path/to/our/LemonFM.pth'
+    ```
+
 
 
 How to run our LemonFM foundation model to extract features from your video frames
@@ -266,42 +272,6 @@ To establish a baseline for the two tasks proposed in LEMON, we conducted an eva
 
 
 
-<!--
-**LemonFM performance:**
-
-This figure shows the performance comparison between our foundation
-model, LemonFM, and the state-of-the-art (SotA) models. Our
-evaluation focuses on three surgical downstream tasks and six
-datasets. LemonFM results are shown in bold, axis labels are presented in regular font.
-
-<img src="https://github.com/user-attachments/assets/080ec843-fc11-4ec7-b669-0bc1de2bf16f">
--->
-
-
-
-<!--
-How to download more videos with specific procedure
----------------------------------------------------
-
-```bash
-$ cd src
-$ python3 video_downloader.py --keyword 'robotic, cholecystectomy' --number 100 --cookies 'your own YouTube cookie file' --output 'your path to store the downloaded videos'
-```
--->
-
-<!--
-How to classify videos as informative/uninformative after downloading more videos
----------------------------------------------------------------------------------
-
-1. To begin with, ensure that you have installed the [videosum](https://github.com/luiscarlosgph/videosum) package correctly, including all its dependencies.
-
-2. Run the video classifier to summarize videos into video storyboards, and then utilize our video storyboard classification models to classify each video as either 'surgical' or 'non-surgical'.
-
-```bash
-$ cd src
-$ python3 video_classifier --input 'your directory containing the downloaded videos' --output 'your path to a json file which contains classification results' --models 'video storyboard classification models'
-```
--->
 
 
 Ethics
