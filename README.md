@@ -26,7 +26,7 @@ Star ⭐ us if you like it!
 
 <br>
 
-This is the official repository for the CVPR 2026 paper "[LEMON: A Large Endoscopic MONocular Dataset and Foundation Model for Perception in Surgical Settings](https://arxiv.org/abs/2503.19740)".
+This is the official repository for the paper "[LEMON: A Large Endoscopic MONocular Dataset and Foundation Model for Perception in Surgical Settings](https://arxiv.org/abs/2503.19740)".
 
 This repository provides open access to the *LEMON* dataset, *LemonFM* foundation model, and training code. 
 
