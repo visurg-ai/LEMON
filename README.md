@@ -164,7 +164,12 @@ python3 -m torch.distributed.run --nproc_per_node=8 --nnodes=1 lemonfm/lemonfm.p
     
     
     **Surgical tool presence detection:**
+
+    ```bash
+    python3 downstream/train_tool_detection.py --lr 1e-4 --opt adam --nepochs 50 --bs 256 --cpdir 'path/to/store/checkpoint' --logdir 'path/to/store/log' --cpint 5 --kfold 5 --lmdb 'path/to/downstream_task/lmdb' --labels 'path/to/downstream_task/annotation' --seed 42 --pretrained-weights 'path/to/our/LemonFM.pth'
     
+    python3 downstream/test_tool_detection.py --lmdb 'path/to/downstream_task/lmdb' --labels 'path/to/downstream_task/annotation' --models 'path/to/your/cpdir' --bs 256 --kfold 5 --pretrained-weights 'path/to/our/LemonFM.pth'
+    ```
     
     
     **Surgical action recognition:**
