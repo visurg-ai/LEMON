@@ -144,7 +144,7 @@ python src/create_lmdb.py \
     --image-size 224 224
 ```
 
-**Fine-tuning for surgical phase recognition:**
+**Surgical phase recognition:**
 
 
 ```bash
@@ -155,11 +155,11 @@ python3 downstream/test_phase_recognition_autolaparo.py --lmdb 'path/to/downstre
 
 
 
-**Fine-tuning for surgical tool presence detection:**
+**Surgical tool presence detection:**
 
 
 
-**Fine-tuning for surgical action recognition:**
+**Surgical action recognition:**
 
 
 
