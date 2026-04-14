@@ -10,11 +10,11 @@
 <div align="center">
 
 [![Paper](https://img.shields.io/badge/📚_Paper-arXiv-b31b1b?style=flat)](https://arxiv.org/abs/2503.19740)
-&nbsp;
+&nbsp;&nbsp;&nbsp;
 [![Model](https://img.shields.io/badge/🤗_Model-HuggingFace-ffcc00?style=flat)](https://huggingface.co/visurg/LemonFM)
-&nbsp;
+&nbsp;&nbsp;&nbsp;
 [![Website](https://img.shields.io/badge/🌐_Website-Project_Page-blue?style=flat)](https://LEMON.visurg.ai/)
-&nbsp;
+&nbsp;&nbsp;&nbsp;
 [![Dataset](https://img.shields.io/badge/🤗_Dataset-HuggingFace-ffcc00?style=flat)](https://huggingface.co/datasets/visurg/LEMON)
 
 </div>
