@@ -1,9 +1,7 @@
-# LEMON: A Large Endoscopic MONocular Dataset and Foundation Model for Perception in Surgical Settings (CVPR 2026)
-
 
 <p align="center">
     <a href="https://visurg.ai/">
-    <img src="https://github.com/user-attachments/assets/92fc59cb-5392-4a72-95b5-35104df129e0">
+    <img src="https://github.com/user-attachments/assets/e9d5d194-1346-49af-9486-7b305cc1ceea">
     </a>
 </p>
 
