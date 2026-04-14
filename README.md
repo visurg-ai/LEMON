@@ -1,7 +1,7 @@
 
 <p align="center">
     <a href="https://visurg.ai/">
-    <img src="https://github.com/user-attachments/assets/e9d5d194-1346-49af-9486-7b305cc1ceea">
+    <img src="https://github.com/user-attachments/assets/138a5276-86fe-44bc-ae28-37e4a2802c1c">
     </a>
 </p>
 
