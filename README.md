@@ -6,28 +6,21 @@
 </p>
 
 
+
 <div align="center">
 
-[![Paper](https://img.shields.io/badge/📚_Paper-arXiv-b31b1b?style=for-the-badge)](https://arxiv.org/abs/2503.19740)
+[![Paper](https://img.shields.io/badge/📚_Paper-arXiv-b31b1b?style=flat)](https://arxiv.org/abs/2503.19740)
 &nbsp;
-[![Model](https://img.shields.io/badge/🤗_Model-HuggingFace-ffcc00?style=for-the-badge)](https://huggingface.co/visurg/LemonFM)
+[![Model](https://img.shields.io/badge/🤗_Model-HuggingFace-ffcc00?style=flat)](https://huggingface.co/visurg/LemonFM)
 &nbsp;
-[![Website](https://img.shields.io/badge/🌐_Website-Project_Page-blue?style=for-the-badge)](https://LEMON.visurg.ai/)
+[![Website](https://img.shields.io/badge/🌐_Website-Project_Page-blue?style=flat)](https://LEMON.visurg.ai/)
 &nbsp;
-[![Dataset](https://img.shields.io/badge/🤗_Dataset-HuggingFace-ffcc00?style=for-the-badge)](https://huggingface.co/datasets/visurg/LEMON)
+[![Dataset](https://img.shields.io/badge/🤗_Dataset-HuggingFace-ffcc00?style=flat)](https://huggingface.co/datasets/visurg/LEMON)
 
 </div>
-
-
 
 
 Star ⭐ us if you like it!
-
-
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/6250cd6a-1404-4786-9c15-fe396265940d" width="70%" > </img>
-</div>
-
 
 ## 💡 News
 
@@ -37,6 +30,15 @@ Star ⭐ us if you like it!
 * 23/Feb/2026. 🚨 LEMON is accepted to **CVPR 2026** main conference!
 * 06/Aug/2025. Our project is now known as **LEMON**, formerly Surg-3M.
 * 25/Mar/2025. The [arXiv](https://arxiv.org/abs/2503.19740) version of the paper is released.
+
+
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/6250cd6a-1404-4786-9c15-fe396265940d" width="70%" > </img>
+</div>
+
+
+
 
 <br>
 
