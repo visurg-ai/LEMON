@@ -6,7 +6,20 @@
 </p>
 
 
-[📚 Paper](https://arxiv.org/abs/2503.19740) - [🤗 Model](https://huggingface.co/visurg/LemonFM) - [🌐 Website](https://LEMON.visurg.ai/) - [🤗 Dataset](https://huggingface.co/datasets/visurg/LEMON) 
+<div align="center">
+
+[![Paper](https://img.shields.io/badge/📚_Paper-arXiv-b31b1b?style=for-the-badge)](https://arxiv.org/abs/2503.19740)
+&nbsp;
+[![Model](https://img.shields.io/badge/🤗_Model-HuggingFace-ffcc00?style=for-the-badge)](https://huggingface.co/visurg/LemonFM)
+&nbsp;
+[![Website](https://img.shields.io/badge/🌐_Website-Project_Page-blue?style=for-the-badge)](https://LEMON.visurg.ai/)
+&nbsp;
+[![Dataset](https://img.shields.io/badge/🤗_Dataset-HuggingFace-ffcc00?style=for-the-badge)](https://huggingface.co/datasets/visurg/LEMON)
+
+</div>
+
+
+
 
 Star ⭐ us if you like it!
 
