@@ -185,14 +185,14 @@ def train(net: torch.nn, train_dl, loss_func, optimizer, scheduler, scaler, devi
 
 def main(args, train_dl=None, valid_dl=None):
     class_mapping = {
-    'Preparation': 0,
-    'Dividing Ligament and Peritoneum': 1,
-    'Dividing Uterine Vessels and Ligament': 2,
-    'Transecting the Vagina': 3,
-    'Specimen Removal': 4,
-    'Suturing': 5,
-    'Washing': 6
-}
+        'Preparation': 0,
+        'Dividing Ligament and Peritoneum': 1,
+        'Dividing Uterine Vessels and Ligament': 2,
+        'Transecting the Vagina': 3,
+        'Specimen Removal': 4,
+        'Suturing': 5,
+        'Washing': 6
+    }
     num_classes = len(class_mapping)
     
     if not os.path.isdir(args.cpdir):
