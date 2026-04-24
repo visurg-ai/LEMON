@@ -184,8 +184,15 @@ def train(net: torch.nn, train_dl, loss_func, optimizer, scheduler, scaler, devi
 
 
 def main(args, train_dl=None, valid_dl=None):
-    class_mapping = {'Other': 0, 'Picking-up the needle':1, 'Positioning the needle tip':2, 'Pushing the needle through the tissue':3, 'Pulling the needle out of the tissue':4, 'Tying a knot':5, 'Cutting the suture':6, 'Returning/dropping the needle':7}
-
+    class_mapping = {
+    'Preparation': 0,
+    'Dividing Ligament and Peritoneum': 1,
+    'Dividing Uterine Vessels and Ligament': 2,
+    'Transecting the Vagina': 3,
+    'Specimen Removal': 4,
+    'Suturing': 5,
+    'Washing': 6
+}
     num_classes = len(class_mapping)
     
     if not os.path.isdir(args.cpdir):
