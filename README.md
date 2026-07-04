@@ -50,7 +50,7 @@ This repository provides open access to the *LEMON* dataset, *LemonFM* foundatio
 
 [*LEMON*](https://huggingface.co/datasets/visurg/LEMON) is a dataset of over 4K surgical high-resolution videos totaling 938 hours from 35 diverse surgical procedure types. Each video is annotated for multi-label classification, indicating the surgical procedures carried out in the video, and for binary classification, indicating if it is robotic or non-robotic. The dataset's annotations can be found in [labels.json](https://github.com/visurg-ai/LEMON/blob/main/labels.json).
 
-[*LemonFM*](https://huggingface.co/visurg/LemonFM) is an image foundation model for surgery, it receives an image as input and produces a feature vector of 1536 features as output. 
+[*LemonFM*](https://huggingface.co/visurg/LemonFM) is a foundation model for surgery, it receives an image as input and produces a feature vector of 1536 features as output. 
 
 <!--The website of our dataset is: [http://LEMON.org](https://LEMON.org)-->
 
